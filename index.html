@@ -3,124 +3,159 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Will You Be My Valentine?</title>
+  <title>Izabella 💖 Be My Valentine</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
+    * { box-sizing: border-box; }
+
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: radial-gradient(circle at top, #ffd6e7, #ff8fb1);
-      color: #b3005e;
-      text-align: center;
       margin: 0;
       min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       overflow: hidden;
     }
 
+    .bg-hearts span {
+      position: absolute;
+      bottom: -50px;
+      font-size: 20px;
+      animation: floatUp linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0); }
+      to { transform: translateY(-120vh); }
+    }
+
     .card {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 30px 25px 40px;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      max-width: 420px;
-      width: 90%;
-      animation: fadeIn 1s ease;
+      background: rgba(255, 255, 255, 0.94);
+      padding: 42px 32px 48px;
+      border-radius: 26px;
+      max-width: 480px;
+      width: 94%;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+      animation: fadeIn 1.2s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
-      margin-top: 0;
-      font-size: 2.4em;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.7em;
+      margin: 0 0 6px;
+      color: #a80046;
     }
 
-    .heart {
-      font-size: 3.5em;
-      animation: pulse 1.2s infinite;
+    .subtitle {
+      font-size: 1.1em;
+      color: #6b0030;
+      margin-bottom: 26px;
+    }
+
+    .main-heart {
+      font-size: 4.2em;
+      animation: pulse 1.3s infinite;
+      margin-bottom: 10px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
     }
 
     .question {
-      font-size: 1.4em;
-      margin: 25px 0 30px;
-      min-height: 60px;
+      font-size: 1.45em;
+      margin: 32px 0 36px;
+      min-height: 80px;
+      color: #7e0036;
     }
 
     .buttons {
       display: flex;
-      gap: 15px;
       justify-content: center;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
     button {
-      background: linear-gradient(135deg, #ff4d8d, #ff2f73);
-      color: white;
       border: none;
-      padding: 14px 32px;
+      padding: 15px 38px;
       font-size: 1.1em;
       border-radius: 999px;
       cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease;
-      box-shadow: 0 8px 18px rgba(255, 77, 141, 0.45);
+      transition: all 0.2s ease;
+      font-weight: 600;
     }
 
-    button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 25px rgba(255, 77, 141, 0.6);
+    .yes {
+      background: linear-gradient(135deg, #ff2f73, #ff5fa2);
+      color: white;
+      box-shadow: 0 10px 25px rgba(255, 47, 115, 0.5);
     }
 
-    button.no {
-      background: linear-gradient(135deg, #bdbdbd, #9e9e9e);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    .yes:hover {
+      transform: translateY(-2px) scale(1.06);
+    }
+
+    .no {
+      background: #e6e6e6;
+      color: #444;
     }
 
     .message {
-      margin-top: 25px;
-      font-size: 1.3em;
       display: none;
-      animation: fadeIn 0.5s ease;
+      font-size: 1.45em;
+      margin-top: 30px;
+      color: #98003f;
+      animation: fadeIn 0.6s ease;
     }
 
     .confetti {
       position: fixed;
       top: -10px;
-      width: 10px;
-      height: 10px;
-      background: red;
-      opacity: 0.8;
+      width: 12px;
+      height: 12px;
       animation: fall linear forwards;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     @keyframes fall {
-      to { transform: translateY(110vh) rotate(360deg); }
+      to { transform: translateY(120vh) rotate(360deg); }
     }
 
     @media (max-width: 600px) {
-      h1 { font-size: 2em; }
-      .question { font-size: 1.2em; }
+      h1 { font-size: 2.2em; }
+      .question { font-size: 1.25em; }
     }
   </style>
 </head>
 <body>
+
+  <div class="bg-hearts" id="bgHearts"></div>
+
   <div class="card">
-    <div class="heart">❤️</div>
-    <h1>Happy Valentine’s Day</h1>
+    <div class="main-heart">❤️</div>
+    <h1>Izabella Aleksandrova</h1>
+    <div class="subtitle">From my heart, only for you</div>
 
     <div id="content">
       <div class="question" id="questionText"></div>
       <div class="buttons">
-        <button onclick="answer(true)">Yes 💖</button>
-        <button class="no" onclick="answer(false)">No 🙃</button>
+        <button class="yes" onclick="answer(true)">Yes 💖</button>
+        <button class="no" onclick="answer(false)">No 🙈</button>
       </div>
     </div>
 
@@ -128,57 +163,69 @@
   </div>
 
   <script>
-    let current = 1;
-
     const questions = [
-      "Would you be my Valentine?",
-      "Do you love me more than chocolate? 🍫",
-      "Will you go on a date with me?",
-      "Can I kiss you under the stars? ✨"
+      "Izabella… will you be my Valentine? 💌",
+      "Do you know that you’re my little angel? 😇",
+      "Can my little baby be mine today and always? 💕",
+      "Will you be my love, my everything, forever? ✨"
     ];
 
-    document.getElementById("questionText").textContent = questions[0];
+    let current = 0;
+    const qText = document.getElementById("questionText");
+    const msg = document.getElementById("finalMessage");
 
-    function answer(isYes) {
-      const msg = document.getElementById("finalMessage");
+    qText.textContent = questions[current];
 
-      if (isYes) {
+    function answer(yes) {
+      if (yes) {
+        current++;
         if (current < questions.length) {
           msg.style.display = "block";
-          msg.textContent = "Aww 🥰 next one...";
+          msg.textContent = "You just made my heart melt 🥰";
           setTimeout(() => {
             msg.style.display = "none";
-            document.getElementById("questionText").textContent = questions[current];
-            current++;
+            qText.textContent = questions[current];
           }, 900);
         } else {
           document.getElementById("content").style.display = "none";
           msg.style.display = "block";
-          msg.textContent = "Yes! I love you so much 💕 Happy Valentine’s Day!";
+          msg.textContent = "I love you so much, Izabella. You are my little angel, my love, my everything. Happy Valentine’s Day 💖";
           launchConfetti();
         }
       } else {
         msg.style.display = "block";
-        msg.textContent = "Hmm… let’s try again 😏";
-        current = 1;
+        msg.textContent = "Hey… my love says try again 😌";
+        current = 0;
         setTimeout(() => {
           msg.style.display = "none";
-          document.getElementById("questionText").textContent = questions[0];
+          qText.textContent = questions[0];
         }, 1200);
       }
     }
 
     function launchConfetti() {
-      for (let i = 0; i < 40; i++) {
+      for (let i = 0; i < 70; i++) {
         const c = document.createElement('div');
         c.className = 'confetti';
         c.style.left = Math.random() * 100 + 'vw';
-        c.style.background = `hsl(${Math.random()*360}, 80%, 60%)`;
+        c.style.background = `hsl(${Math.random()*360}, 80%, 65%)`;
         c.style.animationDuration = (2 + Math.random() * 3) + 's';
         document.body.appendChild(c);
         setTimeout(() => c.remove(), 5000);
       }
     }
+
+    // floating background hearts
+    const bg = document.getElementById('bgHearts');
+    for (let i = 0; i < 22; i++) {
+      const h = document.createElement('span');
+      h.textContent = '💗';
+      h.style.left = Math.random() * 100 + 'vw';
+      h.style.animationDuration = (6 + Math.random() * 9) + 's';
+      h.style.fontSize = (14 + Math.random() * 28) + 'px';
+      bg.appendChild(h);
+    }
   </script>
+
 </body>
 </html>
